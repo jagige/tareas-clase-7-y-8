@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea Clase 6 salarios</title>
+</head>
+<body>
+     <header>
+      <h2>Tarea clase 6: Salarios</h2>
+      <form>
+        <textarea disabled name="textarea" rows="9" cols="80">
+TAREA:
+Crear una interfaz que permita agregar ó quitar (botones agregar y quitar) inputs+labels para completar el salario anual de cada integrante de la familia que trabaje.
+Al hacer click en "calcular", mostrar en un elemento pre-existente el mayor salario anual, menor salario anual, salario anual promedio y salario mensual promedio.
+          
+Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).              
+        </textarea>
+      </form>
+      <br />
+     </header>
+    <main>
+        <form>
+          
+          <label>Agregar o quitar campos por cada persona que trabaje</label>
+            <input type="button" value="Agregar" id="botonCrear"/>
+            <input type="button" value="Quitar" id="botonBorrar"/><br />
+
+          <div id="labelVacio"></div>
+          <input type="button" value="Calcular" id="botonCalcular"/>
+          
+          <div>
+            <p><em id="mayorSalarioAnual"></em></p>
+            <p><em id="menorSalarioAnual"></em></p>
+            <p><em id="salarioAnualPromedio"></em></p>
+            <p><em id="salarioMensualPromedio"></em></p>
+        </div>
+  
+        </form>
+        
+      </main>
+      <footer>
+        <br />
+        <br />
+        <br />
+        <hr />
+        <span>tarea clase 6</span>
+      </footer>
+    <script src="tarea-clase-6-salarios.js"></script>
+</body>
+</html>
