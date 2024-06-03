@@ -5,36 +5,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarea Clase 6 edades</title>
+  <link rel="stylesheet" href="tarea-clase-6-edades.css">
 </head>
 
 <body>
   <header>
     <h2>Tarea clase 6: Edades</h2>
-    <form>
-      <textarea disabled name="textarea" rows="8" cols="80">
+    <p>
+      <textarea disabled name="textarea" rows="13" cols="90">
 TAREA: Empezar preguntando cuánta gente hay en el grupo familiar.
 Crear tantos inputs+labels como gente haya para completar la edad de cada integrante.
-Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo familiar.
-          
-Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).                
+Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo familiar.    
+Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
+
+Tarea clase 8
+A las 2 tareas de la clase 6, ponerles las validaciones que consideren
+necesarias. (usando RegEx, Objetos, forEach, poner estilos,
+ mostrar los errores en la interfaz del usuario y escribir pruebas)
+
+TIP: Las edades no pueden tener decimales.
         </textarea>
-    </form>
+      </p>
     <br />
   </header>
 
   <main>
     <form id="formulario">
       <label>Ingresar el numero del grupo familiar</label>
-      <input type="number" id="grupoFamiliar" />
+      <input type="number" id="grupoFamiliar" value="2" min="1"/>
       <input type="button" value="Enviar información" id="botonEnviar" /><br />
 
       <div id="edadIntegrantes"></div>
 
-      <input type="button" value="calcular" id="botonCalcular" style="display: none" />
+      <input type="button" value="calcular" id="botonCalcular" class="oculto"/>
       <input type="reset" value="borrar" id="botonBorrar" /><br />
     </form>
-    <p id="advertencia" style="display: none;">Debe ingresar un número mayor a cero</p>
-    <div id="resultados" style="display: none">
+    <p id="advertencia" class="oculto">Debe ingresar un número mayor a cero</p>
+    <div id="resultados" class="oculto">
       <p>La mayor edad es: <strong id="mayorEdad"></strong></p>
       <p>La menor edad es: <strong id="menorEdad"></strong></p>
       <p>El promedio de edad es: <strong id="promedioEdad"></strong></p>

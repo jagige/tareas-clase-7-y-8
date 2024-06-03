@@ -1,0 +1,12 @@
+.oculto{
+    display: none;
+}
+
+#advertencia{
+    color: red;
+}
+
+.invalido {
+    box-shadow: 0 0 5px 1px red;
+  }
+
