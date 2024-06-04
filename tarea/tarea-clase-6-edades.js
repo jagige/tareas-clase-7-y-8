@@ -11,28 +11,32 @@ necesarias. (usando RegEx, Objetos, forEach, poner estilos,
 
 TIP: Las edades no pueden tener decimales.
 */
+
+
 const $edadIntegrantes = document.querySelector("#edadIntegrantes");
 
 function crearCampoEdades(numero) {
   const familiar = document.createElement("label");
   familiar.textContent = "Edad del familiar nº " + numero + ":";
   const input = document.createElement("input");
-  familiar.appendChild(input).type = "number";
+  input.type = "number";
   input.setAttribute("class", "edadesFamilia");
   input.setAttribute("value", "0");
   input.setAttribute("min", "0");
   input.setAttribute("max", "150");
   const br = document.createElement("br");
-  familiar.appendChild(br);
-  return $edadIntegrantes.appendChild(familiar);
+ 
+  $edadIntegrantes.appendChild(familiar);
+  $edadIntegrantes.appendChild(input);
+  $edadIntegrantes.appendChild(br);
+  return
 }
 /* Esto es lo que la función agrega en el html
-<label>Edad del integrante nº 1:
-    <input type="number" class="edadesFamilia" value="2" min="1" max="150"><br>
-</label>
+<label>Edad del integrante nº 1:</label>
+    <input type="number" class="edadesFamilia" value="2" min="1" max="150">
+    <br>
 */
 const $resultados = document.querySelector("#resultados");
-
 
 const $botonCalcular = document.querySelector("#botonCalcular");
 const $botonEnviar = document.querySelector("#botonEnviar");
@@ -97,3 +101,11 @@ $botonCalcular.onclick = function () {
   document.querySelector("#promedioEdad").textContent = acumulador / arrayEdadesFamilia.length;
 };
 
+console.log(validarNumero(1));
+console.log(validarNumero("2"));
+console.log(validarNumero(0));
+console.log(validarNumero(""));
+console.log(validarNumero("-74"));
+console.log(validarNumero(-88));
+console.log(validarNumero("d"));
+console.log(validarNumero(",."));
