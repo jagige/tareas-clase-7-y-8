@@ -11,8 +11,6 @@ necesarias. (usando RegEx, Objetos, forEach, poner estilos,
 
 TIP: Las edades no pueden tener decimales.
 */
-
-const $resultados = document.querySelector("#resultados");
 const $edadIntegrantes = document.querySelector("#edadIntegrantes");
 
 function crearCampoEdades(numero) {
@@ -33,6 +31,8 @@ function crearCampoEdades(numero) {
     <input type="number" class="edadesFamilia" value="2" min="1" max="150"><br>
 </label>
 */
+const $resultados = document.querySelector("#resultados");
+
 
 const $botonCalcular = document.querySelector("#botonCalcular");
 const $botonEnviar = document.querySelector("#botonEnviar");
