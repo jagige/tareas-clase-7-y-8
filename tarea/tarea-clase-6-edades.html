@@ -32,7 +32,7 @@ TIP: Las edades no pueden tener decimales.
   <main>
     <form id="formulario">
       <label>Ingresar el numero del grupo familiar</label>
-      <input type="number" id="grupoFamiliar" value="2" min="1"/>
+      <input type="number" id="grupoFamiliar" value="2" min="1" pattern="^[0-9]+$"/>
       <input type="button" value="Enviar información" id="botonEnviar" /><br />
 
       <div id="edadIntegrantes"></div>
@@ -40,7 +40,7 @@ TIP: Las edades no pueden tener decimales.
       <input type="button" value="calcular" id="botonCalcular" class="oculto"/>
       <input type="reset" value="borrar" id="botonBorrar" /><br />
     </form>
-    <p id="advertencia" class="oculto">Debe ingresar un número mayor a cero</p>
+    <p id="advertencia" class="oculto"></p>
     <div id="resultados" class="oculto">
       <p>La mayor edad es: <strong id="mayorEdad"></strong></p>
       <p>La menor edad es: <strong id="menorEdad"></strong></p>

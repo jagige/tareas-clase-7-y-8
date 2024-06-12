@@ -35,27 +35,39 @@ function crearCampoEdades(numero) {
 <label>Edad del integrante nº 1:</label>
     <input type="number" class="edadesFamilia" value="2" min="1" max="150">
     <br>
+
+////probar así
+     <div>
+            <label>Edad del integrante nº 1:</label>
+                <input type="number" class="edadesFamilia" value="2" min="1" max="150">
+                <span>error</span>
+        </div>
 */
 const $resultados = document.querySelector("#resultados");
+const $grupoFamiliar = document.querySelector("#grupoFamiliar")
 
 const $botonCalcular = document.querySelector("#botonCalcular");
 const $botonEnviar = document.querySelector("#botonEnviar");
-
-const $grupoFamiliar = document.querySelector("#grupoFamiliar")
+const $botonBorrar = document.querySelector("#botonBorrar");
 
 $botonEnviar.onclick = function () {
-  let $numeroGrupoFamiliar = Number(document.querySelector("#grupoFamiliar").value);
+  let $numeroGrupoFamiliar = $grupoFamiliar.value;
+  const errorNumero = validarNumero($numeroGrupoFamiliar);
+  const $advertencia = document.querySelector("#advertencia");
+
   $resultados.className = "oculto";
-  if ($numeroGrupoFamiliar <= 0) {
-    $grupoFamiliar.className = "invalido"
-   setTimeout(function(){
-    $grupoFamiliar.className = ""
-}, 300);
+  if (errorNumero){
+      $grupoFamiliar.className = "invalido"
+       setTimeout(function(){
+        $grupoFamiliar.className = ""
+     }, 400);
+///////////////////////tengo un error en 1.2 me muestra el error pero me agrega 2 campos
+    $advertencia.innerHTML = errorNumero;
     $botonCalcular.className = "oculto";
-    document.querySelector("#advertencia").className = "";
+    $advertencia.className = "";
   } else {
     $botonCalcular.className = "";
-    document.querySelector("#advertencia").className = "oculto";
+    $advertencia.className = "oculto";
   }
 
   if ($edadIntegrantes.innerHTML === "") {
@@ -70,7 +82,7 @@ $botonEnviar.onclick = function () {
   }
 };
 
-const $botonBorrar = document.querySelector("#botonBorrar");
+
 $botonBorrar.onclick = function () {
   $edadIntegrantes.innerHTML = "";
   $botonCalcular.className = "oculto";
@@ -78,7 +90,7 @@ $botonBorrar.onclick = function () {
   document.querySelector("#advertencia").className = "oculto";
 };
 
-
+/*
 $botonCalcular.onclick = function () {
   let $edadesFamilia = document.querySelectorAll(".edadesFamilia");
   const arrayEdadesFamilia = [];
@@ -90,6 +102,7 @@ $botonCalcular.onclick = function () {
     }
   }
 
+
   let acumulador = 0;
   for (let i = 0; i < arrayEdadesFamilia.length; i++) {
     acumulador += arrayEdadesFamilia[i];
@@ -100,12 +113,18 @@ $botonCalcular.onclick = function () {
   document.querySelector("#menorEdad").textContent = Math.min(...arrayEdadesFamilia);
   document.querySelector("#promedioEdad").textContent = acumulador / arrayEdadesFamilia.length;
 };
+*/
 
-console.log(validarNumero(1));
-console.log(validarNumero("2"));
-console.log(validarNumero(0));
-console.log(validarNumero(""));
-console.log(validarNumero("-74"));
-console.log(validarNumero(-88));
-console.log(validarNumero("d"));
-console.log(validarNumero(",."));
+$botonCalcular.onclick = function(){
+  let $edadesFamilia = document.querySelectorAll(".edadesFamilia");
+  $edadesFamilia.forEach(function(i){
+    if(validarNumero(i.value)){
+      i.className = "invalido"
+      i.value = "";
+    }else{
+      console.log(i.value);
+    }
+    
+});
+}
+
