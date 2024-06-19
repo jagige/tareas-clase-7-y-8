@@ -43,6 +43,7 @@ function crearCampoEdades(numero) {
                 <span>error</span>
         </div>
 */
+const $advertencia = document.querySelector("#advertencia");
 const $resultados = document.querySelector("#resultados");
 const $grupoFamiliar = document.querySelector("#grupoFamiliar")
 
@@ -50,10 +51,10 @@ const $botonCalcular = document.querySelector("#botonCalcular");
 const $botonEnviar = document.querySelector("#botonEnviar");
 const $botonBorrar = document.querySelector("#botonBorrar");
 
+
 $botonEnviar.onclick = function () {
   let $numeroGrupoFamiliar = $grupoFamiliar.value;
   const errorNumero = validarNumero($numeroGrupoFamiliar);
-  const $advertencia = document.querySelector("#advertencia");
 
   $resultados.className = "oculto";
   if (errorNumero){
@@ -118,13 +119,71 @@ $botonCalcular.onclick = function () {
 $botonCalcular.onclick = function(){
   let $edadesFamilia = document.querySelectorAll(".edadesFamilia");
   $edadesFamilia.forEach(function(i){
-    if(validarNumero(i.value)){
+    if(validarEdad(i.value)){
       i.className = "invalido"
       i.value = "";
-    }else{
-      console.log(i.value);
+      $advertencia.className = "";
+    } 
+  });
+  $edadesFamilia.forEach(function(i){
+    if(i.value ===""){
+    $edadIntegrantes.innerHTML = "";
+
+    } else{
+        const arrayEdadesFamilia = [];
+        for (let i = 0; i < $edadesFamilia.length; i++) {
+         arrayEdadesFamilia.push(parseInt($edadesFamilia[i].value));
+            if ($edadesFamilia[i].value === "") {
+             arrayEdadesFamilia.pop();
+             arrayEdadesFamilia.push(0);
+           }
+  
+     
+      $resultados.className = "";
+      document.querySelector("#mayorEdad").textContent = Math.max(...arrayEdadesFamilia);
+     document.querySelector("#menorEdad").textContent = Math.min(...arrayEdadesFamilia);
+     document.querySelector("#promedioEdad").textContent = calcularPromedio(arrayEdadesFamilia) ;
     }
-    
-});
+    }
+  })
+
 }
+/*
+let errorEdad = validarNumero($edadesFamilia);
+for(let i =0; i < $edadesFamilia.length; i++){
+    if($edadesFamilia[i].value === ""){
+    $edadIntegrantes.innerHTML = "";
+    $botonCalcular.className = "oculto";
+    $advertencia.className = "";
+    }
+  
+}*/
+
+/*
+  if (errorEdad){
+    $edadIntegrantes.innerHTML = "";
+    $advertencia.innerHTML = errorEdad;
+    $botonCalcular.className = "oculto";
+    $advertencia.className = "";
+   } else {
+  const arrayEdadesFamilia = [];
+  for (let i = 0; i < $edadesFamilia.length; i++) {
+    arrayEdadesFamilia.push(parseInt($edadesFamilia[i].value));
+    if ($edadesFamilia[i].value === "") {
+      arrayEdadesFamilia.pop();
+      arrayEdadesFamilia.push(0);
+    }
+
+  let acumulador = 0;
+  for (let i = 0; i < arrayEdadesFamilia.length; i++) {
+    acumulador += arrayEdadesFamilia[i];
+  }
+
+  $resultados.className = "";
+  document.querySelector("#mayorEdad").textContent = Math.max(...arrayEdadesFamilia);
+  document.querySelector("#menorEdad").textContent = Math.min(...arrayEdadesFamilia);
+  document.querySelector("#promedioEdad").textContent = acumulador / arrayEdadesFamilia.length;
+   }
+  }
+}*/
 
