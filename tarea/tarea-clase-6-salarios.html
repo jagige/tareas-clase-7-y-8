@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea Clase 6 salarios</title>
+    <link rel="stylesheet" href="tarea-clase-6-estilos.css">
 </head>
 <body>
      <header>
       <h2>Tarea clase 6: Salarios</h2>
       <form>
-        <textarea disabled name="textarea" rows="9" cols="80">
+        <textarea disabled name="textarea" rows="13" cols="90">
 TAREA:
 Crear una interfaz que permita agregar ó quitar (botones agregar y quitar) inputs+labels para completar el salario anual de cada integrante de la familia que trabaje.
 Al hacer click en "calcular", mostrar en un elemento pre-existente el mayor salario anual, menor salario anual, salario anual promedio y salario mensual promedio.
-          
-Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).              
+Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0). 
+
+Tarea clase 8
+A las 2 tareas de la clase 6, ponerles las validaciones que consideren
+necesarias. (usando RegEx, Objetos, forEach, poner estilos,
+ mostrar los errores en la interfaz del usuario y escribir pruebas)
+TIP: Las edades no pueden tener decimales.
         </textarea>
       </form>
       <br />
@@ -28,7 +34,8 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
 
           <div id="labelVacio"></div>
           <input type="button" value="Calcular" id="botonCalcular"/>
-          
+
+          <p id="advertencia" class="oculto"></p>
           <div>
             <p><em id="mayorSalarioAnual"></em></p>
             <p><em id="menorSalarioAnual"></em></p>
@@ -46,6 +53,7 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
         <hr />
         <span>tarea clase 6</span>
       </footer>
+    <script src="tarea-clase-6-validacoin-pruebas.js"></script>
     <script src="tarea-clase-6-salarios.js"></script>
 </body>
 </html>
