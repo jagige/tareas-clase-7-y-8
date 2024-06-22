@@ -20,11 +20,11 @@ function numeroMaximo(numero){
 }
 
 function calcularPromedio(numeros){
-    let acumulador = 0
-    for(let i =0; i<numeros.length; i++){
-        acumulador = acumulador + numeros[i];
+    let resultado = 0;
+    for(let i =0; i < numeros.length; i++){
+      resultado = resultado + numeros[i]
     }
- return acumulador/numeros.length;
+    return resultado/numeros.length;
 }
 
 
@@ -48,10 +48,10 @@ function validarEdad(edad){
         return "Debe ingresar un número válido";
     }
     if (Number(edad) < 0){
-        return "Si es un bebé pude tener cero años, no menos";
+        return "El número debe ser cero o más";
     }
     if(!/^[0-9]+$/.test(edad)){
-        return "Solo se permiten números enteros (cantidad de años)"
+        return "Solo se permiten números enteros"
     }
     return ""
 }
@@ -76,17 +76,17 @@ console.assert(validarNumero("4") === "",
 
 function probarValidarEdad(){
     console.assert(validarEdad("") === "Debe ingresar un número válido",
- "validarNumero uno no funcionó con un string vacio");
+ "validarEdad uno no funcionó con un string vacio");
 
 console.assert(
-    validarEdad("-7") === "Si es un bebé pude tener cero años, no menos",
-"validarNumero uno no validó que el número sea mayor a cero");
+    validarEdad("-7") === "El número debe ser cero o más",
+"validarEdad uno no validó que el número sea mayor a cero");
 
-console.assert(validarEdad("0.6") === "Solo se permiten números enteros (cantidad de años)",
-"validarNumero no avisó que no hay números")
+console.assert(validarEdad("0.6") === "Solo se permiten números enteros",
+"validarEdad no avisó que no hay números")
 
 console.assert(validarEdad("9") === "",
- "validarNumero falló con un número válido");
+ "validarEdad falló con un número válido");
 
 }
 

@@ -11,55 +11,69 @@ necesarias. (usando RegEx, Objetos, forEach, poner estilos,
 TIP: Las edades no pueden tener decimales.
 */
 
-const $labelVacio = document.querySelector("#labelVacio");
+const $areaSalarios = document.querySelector("#area-salarios");
+const $resultados = document.querySelector("#resultados");
+const $advertencia = document.querySelector("#advertencia");
 const $botonCrear = document.querySelector("#botonCrear");
-const $botonBorrar = document.querySelector("#botonBorrar");
+const $botonQuitar = document.querySelector("#botonQuitar");
 const $botonCalcular = document.querySelector("#botonCalcular");
+const $botonBorrar = document.querySelector("#botonBorrar");
 
-function crearCampoSalario() {
-  const salarioAnual = document.createElement("label");
-  salarioAnual.textContent = "Ingresar salario anual ";
-  const input = document.createElement("input");
-  salarioAnual.appendChild(input).type = "number";
-  input.setAttribute("class", "salarioAnual");
-  const br = document.createElement("br");
-  salarioAnual.appendChild(br);
-  return $labelVacio.appendChild(salarioAnual);
+function crearCampoSalario(){
+    const label = document.createElement("label");
+    label.textContent = "Ingresar salario anual ";
+    const input = document.createElement("input");
+    input.type = "number";
+    input.setAttribute("class", "salarios");
+    input.setAttribute("value", "");
+    input.setAttribute("min", "0");
+    const div = document.createElement("div");
+   
+    div.appendChild(label);
+    div.appendChild(input);
+  return $areaSalarios.appendChild(div);
 }
 
-/* Esto es lo que la función agrega en el html
-<label>Ingresar salario anual <input type="number" class="salarioAnual"><br></label>
-*/
 
 $botonCrear.onclick = function(){
-    crearCampoSalario()
+    crearCampoSalario();
 }
 
-
-$botonBorrar.onclick = function () {
-    let padre = document.querySelector("#labelVacio");
-    padre.removeChild(padre.lastChild)
+$botonQuitar.onclick = function () {
+    $areaSalarios.removeChild($areaSalarios.lastChild);
 }
 
-function calcularPromedio(numeros){
-    let resultado = 0;
-    for(let i =0; i < numeros.length; i++){
-      resultado = resultado + numeros[i]
-    }
-    return resultado/numeros.length;
+$botonBorrar.onclick = function(){
+    $areaSalarios.innerHTML ="";
+    $resultados.className = "oculto"
+    $advertencia.className = "oculto"
+    $botonCalcular.className ="";
+    $botonBorrar.classList.remove("mensaje");
 }
 
 $botonCalcular.onclick = function(){
-    let $valores = document.querySelectorAll(".salarioAnual");
+    const $valores = document.querySelectorAll(".salarios");
+    $valores.forEach(function(i){
+        if(validarEdad(i.value)){
+            i.className = "invalido"
+            i.value = "";
+            $advertencia.innerHTML = "Solo se permiten números enteros positivos o cero. El resultado corresponde a los números válidos.";
+            $advertencia.className ="";
+            $botonCalcular.className = "oculto";
+            $botonBorrar.classList.add("mensaje");
+        }
+    })
+
     let arraysalarios =[]
     for(let i=0; i<$valores.length; i++){
         arraysalarios.push(parseInt($valores[i].value))
-        if($valores[i].value === "" || $valores[i].value <= 0){
+        if($valores[i].value === ""){
             arraysalarios.pop();
         }
     }    
-    document.querySelector("#mayorSalarioAnual").textContent ="El mayor salario anual es: "+ Math.max(...arraysalarios);
-    document.querySelector("#menorSalarioAnual").textContent ="El menor salario anual es: "+ Math.min(...arraysalarios);
+    $resultados.className = ""
+    document.querySelector("#mayorSalarioAnual").textContent ="El mayor salario anual es: "+ numeroMaximo(arraysalarios);
+    document.querySelector("#menorSalarioAnual").textContent ="El menor salario anual es: "+ numeroMinimo(arraysalarios);
     document.querySelector("#salarioAnualPromedio").textContent ="El salario anual promedio es: "+ calcularPromedio(arraysalarios);
     document.querySelector("#salarioMensualPromedio").textContent ="El salario mensual promedio es: "+ calcularPromedio(arraysalarios)/12
 }

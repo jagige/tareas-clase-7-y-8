@@ -9,3 +9,11 @@
 .invalido {
     border-color: red;
   }
+
+.letraRoja{
+    color: red;
+}
+
+.mensaje{
+    width: 110px; height: 25px;
+}
